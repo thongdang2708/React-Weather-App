@@ -1,30 +1,30 @@
 import { UserLocation } from "@/layouts/header/model/types";
-import { WeatherCondition } from "default_types";
+import { WeatherCondition, WeatherInformationHourly } from "default_types";
 
 export type CurrentWeatherDateComponentType = {
-    city?: string | null,
-    setCity?: React.Dispatch<React.SetStateAction<string>>,
-    userLocation?: UserLocation | null | undefined,
-    setUserLocation?: React.Dispatch<React.SetStateAction<string>>,
+    city: string;
+    setCity: React.Dispatch<React.SetStateAction<string>>;
+    userLocation?: UserLocation;
+    setUserLocation: React.Dispatch<React.SetStateAction<UserLocation | undefined>>; // Correct type
 };
 
-export type TitleWeatherInformation = {
-    weatherInformation?: SingleWeatherAPIResponse | null | undefined
+export type TitleWeatherInformationType = {
+    weatherInformation?: WeatherInformationHourly
 };
 
 export type WeatherConditionWithSpecificTime = {
-    weather?: WeatherCondition[] | null | undefined,
-    dt_txt?: string | null | undefined
+    weather: WeatherCondition[] | undefined,
+    dt_txt: string | null | undefined
 }
 
 export type TemperatureInformationType = {
-    weatherInformation?: SingleWeatherAPIResponse | null | undefined
+    weatherInformation?: WeatherInformationHourly
 };
 
 export type CurrentWeatherConditionType = {
-    weatherInformation?: SingleWeatherAPIResponse | null | undefined
+    weatherInformation?: WeatherInformationHourly, 
 };
 
 export type ForecastSevenDaysConditionType = {
-    weatherInformation?: SingleWeatherAPIResponse | null | undefined,
+    weatherInformation?: WeatherInformationHourly,
 };

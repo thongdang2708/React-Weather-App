@@ -1,5 +1,5 @@
 import { WeatherConditionWithSpecificTime } from "@/layouts/weather_current_date_component/model/types"
-import { City, HourlyInformation, SingleWeatherAPIResponse, WeatherInformation} from "default_types";
+import { City, HourlyInformation } from "default_types";
 
 
 export type ListOfWeatherConditionType = {
@@ -7,15 +7,15 @@ export type ListOfWeatherConditionType = {
 };
 
 export type SingleWeatherConditionType = {
-    weatherCondition?: WeatherConditionWithSpecificTime,
+    weatherCondition: WeatherConditionWithSpecificTime,
 };
 
 export type SingleWeatherFiguresType = {
-    weatherInformation?: HourlyInformation | null | undefined,
-    city?: City | null | undefined,
+    weatherInformation?: HourlyInformation,
+    city?: City,
 };
 
 export type SingleWeatherFiguresWithTemperatureType =  {
-    weatherInformation?: HourlyInformation | null | undefined,
-    city?: City | null | undefined,
+    weatherInformation?: HourlyInformation,
+    city?: City,
 };

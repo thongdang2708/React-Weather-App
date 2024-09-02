@@ -36,10 +36,10 @@ export type WeatherInformation = {
 
 
 export type WeatherCondition = {
-    id?: number | null,
-    main?: string | null,
-    description?: string | null,
-    icon?: string | null,
+    id?: number,
+    main?: string,
+    description?: string,
+    icon?: string,
 }
 
 export type SingleWeatherAPIResponse = {
@@ -101,8 +101,8 @@ export type City = {
     id?: number | null,
     name?: string | null,
     coord?: {
-        lat?: number | null,
-        lon?: number | null,
+        lat?: number,
+        lon?: number,
     },
     country?: string | null,
     population?: number | null,

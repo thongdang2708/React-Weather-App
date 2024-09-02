@@ -1,4 +1,4 @@
-import React, { EventHandler, useState } from 'react';
+import { useState } from 'react';
 import { IoLocationOutline } from "react-icons/io5";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { MdOutlineFindReplace } from "react-icons/md";
@@ -19,7 +19,7 @@ function Header({ city, setCity, userLocation, setUserLocation } : HeaderProps) 
               // save the geolocation coordinates in two variables
               const { latitude, longitude } = position.coords;
               // update the value of userlocation variable
-              setUserLocation({ latitude, longitude });
+              setUserLocation?.({ latitude, longitude });
             },
             // if there was an error getting the users location
             (error) => {
@@ -33,7 +33,7 @@ function Header({ city, setCity, userLocation, setUserLocation } : HeaderProps) 
         }
       };
 
-    const handleChange = (e) => {
+    const handleChange = (e : any) => {
 
         setSearchWords(e.target.value);
     }
@@ -45,9 +45,9 @@ function Header({ city, setCity, userLocation, setUserLocation } : HeaderProps) 
             setSnackBar(true);
             return;
         }
-        setCity(searchWords);
+        setCity?.(searchWords);
         setSearchWords("");
-        setUserLocation({ latitude: null, longitude: null });
+        setUserLocation?.({ latitude: 0, longitude: 0 });
     }
 
     const handleClose = () => {

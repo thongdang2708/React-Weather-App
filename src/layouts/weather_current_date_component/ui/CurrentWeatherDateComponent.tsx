@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { CurrentWeatherDateComponentType } from '../model/types';
 import { Snackbar } from '@mui/material';
-import {HourlyInformation, SingleWeatherAPIResponse, SingleWeatherAPIResponseWithLatitudeAndLongitude} from "../../../../default_types";
-import { useMap } from 'react-leaflet';
+import {SingleWeatherAPIResponseWithLatitudeAndLongitude, WeatherInformationHourly} from "../../../../default_types";
 import TitleWeatherInformation from './TitleWeatherInformation';
 import TemperatureInformation from './TemperatureInformation';
 import CurrentWeatherCondition from './CurrentWeatherCondition';
@@ -12,20 +11,23 @@ function CurrentWeatherDateComponent({ city, setCity, userLocation, setUserLocat
 
     const [snackBar, setSnackBar] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string|null>(null);
-    const [weatherInformation, setWeatherInformation] = useState<SingleWeatherAPIResponse | null>(null);
+    const [weatherInformation, setWeatherInformation] = useState<WeatherInformationHourly | null>(null);
     const fetchWeatherData = useCallback(() => {
         
         (async () => {
             try {
-            let parsedCity = "";
-            if ((userLocation?.latitude !== null && userLocation?.longitude !== null)) {
+            let parsedCity : any= "";
 
-                let query : string = `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation?.latitude}&lon=${userLocation?.longitude}&appid=${import.meta.env.VITE_API_KEY}`;
+            const latitude : any= userLocation?.latitude;
+            const longitude : any = userLocation?.longitude;
+            if ((latitude !== 0 && longitude !== 0)) {
+                let query : string = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_API_KEY}`;
 
                 let response : any = await fetch(query);
                 let data : SingleWeatherAPIResponseWithLatitudeAndLongitude = await response.json();
                 parsedCity = data?.name;
             } else {
+                console.log(`City: ${city}`);
                 parsedCity = city;
             }
             
@@ -33,10 +35,10 @@ function CurrentWeatherDateComponent({ city, setCity, userLocation, setUserLocat
             let weatherQuery : string = `https://api.openweathermap.org/data/2.5/forecast?q=${parsedCity}&appid=${import.meta.env.VITE_API_KEY}&cnt=56`;
             let response : any = await fetch(weatherQuery);
 
-            let data : SingleWeatherAPIResponse = await response.json();
+            let data : WeatherInformationHourly = await response.json();
 
-            setWeatherInformation(data);
-            setUserLocation({
+            setWeatherInformation?.(data);
+            setUserLocation?.({
                 latitude: data?.city?.coord?.lat,
                 longitude: data?.city?.coord?.lon
             });

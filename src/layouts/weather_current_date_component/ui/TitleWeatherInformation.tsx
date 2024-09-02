@@ -1,10 +1,10 @@
-import React from 'react'
-import { TitleWeatherInformation } from '../model/types';
+import { TitleWeatherInformationType } from '../model/types';
 import {ConvertToDayFunction} from "../../../../utils/ConvertToDay";
 
-function TitleWeatherInformation({ weatherInformation } : TitleWeatherInformation) {
+function TitleWeatherInformation({ weatherInformation } : TitleWeatherInformationType) {
 
-  const dt_txt = weatherInformation?.list?.length > 0 ? weatherInformation?.list[0].dt_txt : null;
+  const weatherInformationList = weatherInformation?.list || [];
+  const dt_txt = weatherInformationList.length > 0 ? weatherInformationList[0].dt_txt : null;
 
   if (dt_txt === null) {
     return (

@@ -1,17 +1,20 @@
-import { WeatherConditionType } from 'default_types'
-import React from 'react'
+import { SingleWeatherConditionType } from './models/types'
 
-function SingleWeatherCondition( { weatherCondition} : WeatherConditionType ) {
+function SingleWeatherCondition( { weatherCondition} : SingleWeatherConditionType ) {
+  
+  const weather : any = weatherCondition?.weather;
+
+  const weatherData : any = weather[0];
 
   return (
     <div className='mx-6 flex flex-col'>
         <div>
-        <img src={`https://openweathermap.org/img/wn/${weatherCondition?.weather[0]?.icon}@4x.png`} width={50}
+        <img src={`https://openweathermap.org/img/wn/${weatherData?.icon}@4x.png`} width={50}
         height={50}
         alt="weather-icon"/>
         </div>
-        <p className='font-bold'> {weatherCondition?.weather[0]?.main.toUpperCase()} </p>
-        <p className='font-bold '> {weatherCondition?.weather[0]?.description.toUpperCase()} </p>
+        <p className='font-bold'> {weatherData?.main.toUpperCase()} </p>
+        <p className='font-bold '> {weatherData?.description.toUpperCase()} </p>
     </div>
   )
 }

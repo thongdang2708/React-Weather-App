@@ -5,14 +5,13 @@ import { Marker, Popup} from 'react-leaflet';
 
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
-import { UserLocation } from '@/layouts/header/model/types'
-function Map ({userLocation} : UserLocation) {
+import { MapTypes } from '../model/types';
+function Map ({userLocation} : MapTypes) {
 
     const icon = new Icon({
         iconUrl: "https://cdn-icons-png.flaticon.com/128/1865/1865269.png",
         iconSize: [38, 38]
     });
-
 
     return (
         <>

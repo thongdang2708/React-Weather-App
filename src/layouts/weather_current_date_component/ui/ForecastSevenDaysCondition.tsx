@@ -1,7 +1,5 @@
-import React from 'react'
 import { ForecastSevenDaysConditionType } from '../model/types';
 import { ConvertDate } from "../../../../utils/ConvertDate";
-import CurrentWeatherCondition from './CurrentWeatherCondition';
 import SingleWeatherFiguresWithTemperature from '@/components/SingleWeatherFiguresWithTemperature';
 
 function ForecastSevenDaysCondition( { weatherInformation} : ForecastSevenDaysConditionType) {
@@ -14,40 +12,49 @@ function ForecastSevenDaysCondition( { weatherInformation} : ForecastSevenDaysCo
     const fifthDate = ConvertDate(5);
     const sixthDate = ConvertDate(6);
 
-    const currentConditionsInDates = weatherInformation?.list?.length > 0 ? weatherInformation?.list?.filter((informationForWeather, index, array) => {
+    const weatherInformationList = weatherInformation?.list || [];
+
+    const currentConditionsInDates = weatherInformationList.length > 0 ? weatherInformationList.filter((informationForWeather, _, array) => {
 
       const thisDateValue = array.find((subInformation) => {
-        const informationDate = subInformation?.dt_txt.split(" ")[0];
+        const dt_txt : any= subInformation?.dt_txt;
+        const informationDate = dt_txt.split(" ")[0];
         return informationDate === today;
       });
 
       const tomorrowDateValue = array.find((subInformation) => {
-        const informationDate = subInformation?.dt_txt.split(" ")[0];
+        const dt_txt : any= subInformation?.dt_txt;
+        const informationDate = dt_txt.split(" ")[0];
         return informationDate === tomorrow;
       });
 
       const secondDateValue = array.find((subInformation) => {
-        const informationDate = subInformation?.dt_txt.split(" ")[0];
+        const dt_txt : any= subInformation?.dt_txt;
+        const informationDate = dt_txt.split(" ")[0];
         return informationDate === secondDate;
       });
 
       const thirdDateValue = array.find((subInformation) => {
-        const informationDate = subInformation?.dt_txt.split(" ")[0];
+        const dt_txt : any= subInformation?.dt_txt;
+        const informationDate = dt_txt.split(" ")[0];
         return informationDate === thirdDate;
       });
 
       const fourthateValue = array.find((subInformation) => {
-        const informationDate = subInformation?.dt_txt.split(" ")[0];
+        const dt_txt : any= subInformation?.dt_txt;
+        const informationDate = dt_txt.split(" ")[0];
         return informationDate === fourthDate;
       });
 
       const fifthDateValue = array.find((subInformation) => {
-        const informationDate = subInformation?.dt_txt.split(" ")[0];
+        const dt_txt : any= subInformation?.dt_txt;
+        const informationDate = dt_txt.split(" ")[0];
         return informationDate === fifthDate;
       });
 
       const sixthDateValue = array.find((subInformation) => {
-        const informationDate = subInformation?.dt_txt.split(" ")[0];
+        const dt_txt : any= subInformation?.dt_txt;
+        const informationDate = dt_txt.split(" ")[0];
         return informationDate === sixthDate;
       });
       
