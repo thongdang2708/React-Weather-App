@@ -3,7 +3,7 @@ import SingleWeatherCondition from './SingleWeatherCondition';
 
 function ListOfWeatherConditions( { weatherConditions} : ListOfWeatherConditionType) {
 
-    const conditions = weatherConditions || [];
+  const conditions = weatherConditions || [];
   return (
     <div className="weather-condition-list w-full flex content-center border-2 border-solid py-6 px-6 bg-blue-100 rounded-lg shadow-lg">
         {conditions.length > 0 ? (
